@@ -23,7 +23,7 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
   - GPT (OpenAi)
   - Gemini (Google AI)
   - LLaMA (Codeium)
-- Dataset: se utilizará el dataset Spider que consta de 10.181 preguntas y 5.693 querys SQL
+- Dataset: se utilizará el dataset mini-dev BIRD 
 - Estrategias de prompts:  
   - Zero-shot: Se le pide al modelo que genere respuestas sin ejemplos previos
   - One-shot: Se le proporciona un ejemplo previo para mejorar la generación
