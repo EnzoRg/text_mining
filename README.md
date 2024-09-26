@@ -1,4 +1,4 @@
-# Evaluación comparativa y desarrollo experimental de modelos de lenguaje para la transformación de lenguaje natural a consultas SQL
+# Batalla de Gigantes: Comparando modelos de lenguaje en la generación de Consultas SQL
 
 ## Resumen
 El objetivo de este proyecto es analizar diferentes modelos de lenguaje de gran tamaño (LLM) como GPT, LLaMA y Gemini, para generar consultas (querys) SQL a partir de indicaciones en lenguaje natural. Se utilizará el dataset BIRD, que contiene tanto consultas SQL simples como complejas con su respectiva descripciones en lenguaje natural, permitiendo evaluar el rendimiento de los modelos en escenarios variados. Las evaluaciones se llevarán a cabo en tres etapas, aplicando estrategias de zero-shot, one-shot y few-shot learning. Las métricas principales serán la Execution Accuracy (EX) y el Valid Efficiency Score (VES), que medirán la precisión y la eficiencia en la generación de consultas SQL. Este análisis comparativo permitirá identificar las fortalezas y limitaciones de cada enfoque, con el objetivo de mejorar la interacción entre usuarios no técnicos y bases de datos.
