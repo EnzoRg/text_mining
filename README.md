@@ -14,9 +14,29 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
 - Optimizar los prompts utilizados en cada modelo para obtener los mejores resultados
 
 ## Técnicas relevantes
+- Prompt engineering
+- Métricas de evalución
+- Análisis de error
 
 ## Planificación 
+- Modelos evaluados: se seleccionarán los siguientes modelos para la generación de querys: 
+  - GPT (OpenAi)
+  - Gemini (Google AI)
+  - LLaMA (Codeium)
+- Dataset: se utilizará el dataset Spider que consta de 10.181 preguntas y 5.693 querys SQL
+- Estrategias de prompts:  
+  - Zero-shot: Se le pide al modelo que genere respuestas sin ejemplos previos
+  - One-shot: Se le proporciona un ejemplo previo para mejorar la generación
+  - Few-shot: Se le proporcionan varios ejemplos previos, incluyendo cabeceras de tablas
+- Métricas de evaluación: 
+  - Execution Accuracy (EX): Mide si la consulta generada devuelve los resultados correctos al ser ejecutada en la base de datos.
+  - Valid Efficiency Score (VES): Mide la eficiencia en la generación de consultas válidas dentro de un tiempo razonable.
+- Análisis de errores: se clasificarán los errores en las respuestas generada
+
 
 ## Referencias
-
-[Can LLMAlready Serve as A Database Interface? ABIgBench for Large-Scale Database Grounded Text-to-SQLs](https://arxiv.org/pdf/2305.03111)
+- [BIRD-SQL: A BIg Bench for Large-Scale Database Grounded Text-to-SQLs](https://bird-bench.github.io/)
+- [C3: Zero-shot Text-to-SQL with ChatGPT](https://paperswithcode.com/paper/c3-zero-shot-text-to-sql-with-chatgpt)
+- [A comprehensive evaluation of ChatGPT's zero-shot Text-to-SQL capability](https://paperswithcode.com/paper/a-comprehensive-evaluation-of-chatgpt-s-zero)
+- [ChatGPT for SQL: How to Write SQL Queries with OpenAI](https://popsql.com/blog/chatgpt-for-sql)
+- [Natural Language to SQL using ChatGPT](https://medium.com/@soumyansh/natural-language-to-sql-using-chatgpt-cb330d055180)
