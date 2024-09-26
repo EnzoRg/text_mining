@@ -18,3 +18,5 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
 ## Planificación 
 
 ## Referencias
+
+[Can LLMAlready Serve as A Database Interface? ABIgBench for Large-Scale Database Grounded Text-to-SQLs](https://arxiv.org/pdf/2305.03111)
