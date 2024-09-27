@@ -15,15 +15,17 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
 - Optimizar los prompts utilizados en cada modelo para obtener los mejores resultados
 
 ## Técnicas relevantes
+- Transformers 
 - Prompt engineering
 - Métricas de evalución
 - Análisis de error
+- Clustering de palabras 
 
 ## Planificación 
 - Modelos evaluados: se seleccionarán los siguientes modelos para la generación de querys: 
-  - GPT (OpenAi)
-  - Gemini (Google AI)
-  - LLaMA (Codeium)
+  - GPT
+  - LLaMA
+  - Gemini 
 - Dataset: se utilizará el dataset mini-dev BIRD 
 - Estrategias de prompts:  
   - Zero-shot: Se le pide al modelo que genere respuestas sin ejemplos previos
