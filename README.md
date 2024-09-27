@@ -2,14 +2,14 @@
 
 
 ## Resumen
-El objetivo de este proyecto es analizar diferentes modelos de lenguaje de gran tamaño (LLM) como GPT, LLaMA y Gemini, para generar consultas (querys) SQL a partir de indicaciones en lenguaje natural. Se utilizará el dataset BIRD, que contiene tanto consultas SQL simples como complejas con su respectiva descripciones en lenguaje natural, permitiendo evaluar el rendimiento de los modelos en escenarios variados. Las evaluaciones se llevarán a cabo en tres etapas, aplicando estrategias de zero-shot, one-shot y few-shot learning. Las métricas principales serán la Execution Accuracy (EX) y el Valid Efficiency Score (VES), que medirán la precisión y la eficiencia en la generación de consultas SQL. Este análisis comparativo permitirá identificar las fortalezas y limitaciones de cada enfoque, con el objetivo de mejorar la interacción entre usuarios no técnicos y bases de datos.
+El objetivo de este proyecto es analizar diferentes modelos de lenguaje de gran tamaño (LLM) como GPT, LLaMA y Gemma, para generar consultas (querys) SQL a partir de indicaciones en lenguaje natural. Se utilizará el dataset BIRD, que contiene tanto consultas SQL simples como complejas con su respectiva descripciones en lenguaje natural, permitiendo evaluar el rendimiento de los modelos en escenarios variados. Las evaluaciones se llevarán a cabo en tres etapas, aplicando estrategias de zero-shot, one-shot y few-shot learning. Las métricas principales serán la Execution Accuracy (EX) y el Valid Efficiency Score (VES), que medirán la precisión y la eficiencia en la generación de consultas SQL. Este análisis comparativo permitirá identificar las fortalezas y limitaciones de cada enfoque, con el objetivo de mejorar la interacción entre usuarios no técnicos y bases de datos.
 
 ## Hipótesis
-Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemini, supere a los anteriores modelos en cuanto a consultas SQL complejas.
+Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemma, supere a los anteriores modelos en cuanto a consultas SQL complejas.
 
 ## Objetivos 
 - Comparar el rendimiento de modelos de lenguaje 
-- Evaluar el impacto de los diferentes prompts 
+- Evaluar el impacto de los diferentes prompts para mejorar resultados 
 - Explorar la capacidad de los modelos para manejar consultas de diferentes niveles de complejidad
 - Identificar y analizar los principales errores en la generación de querys 
 - Optimizar los prompts utilizados en cada modelo para obtener los mejores resultados
@@ -19,13 +19,13 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
 - Prompt engineering
 - Métricas de evalución
 - Análisis de error
-- Clustering de palabras 
+- Correlación 
 
 ## Planificación 
 - Modelos evaluados: se seleccionarán los siguientes modelos para la generación de querys: 
   - GPT
   - LLaMA
-  - Gemini 
+  - Gemma
 - Dataset: se utilizará el dataset mini-dev BIRD 
 - Estrategias de prompts:  
   - Zero-shot: Se le pide al modelo que genere respuestas sin ejemplos previos
