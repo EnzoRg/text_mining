@@ -1,6 +1,9 @@
 # Foldes
 /bird_dev
+/spider_data
 
+# Files
+*.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
