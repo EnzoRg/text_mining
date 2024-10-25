@@ -1,3 +1,9 @@
+# Notebooks
+Baseline.ipynb
+bird_dataset.ipynb
+Datos.ipynb
+gemini.ipynb
+
 # Foldes
 /bird_dev
 /papers
@@ -5,6 +11,8 @@
 
 # Files
 *.xlsx
+*.docx
+*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
