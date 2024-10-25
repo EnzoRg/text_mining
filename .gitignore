@@ -2,12 +2,14 @@
 Baseline.ipynb
 bird_dataset.ipynb
 Datos.ipynb
-gemini.ipynb
+llm_api.ipynb
+
 
 # Foldes
 /bird_dev
 /papers
 /src
+/bird_src
 
 # Files
 *.xlsx
