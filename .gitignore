@@ -1,5 +1,8 @@
+your_database.db
+
 # Notebooks
 llm_api.ipynb
+models_ft.ipynb
 
 # Foldes
 /bird_dev
