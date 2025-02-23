@@ -1,11 +1,11 @@
-# Batalla de Gigantes: Comparando modelos de lenguaje para la traducción de lenguaje natural a SQL
+# Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL
 
 
 ## Resumen
-El objetivo de este proyecto es analizar diferentes modelos de lenguaje de gran tamaño (LLM) como GPT, LLaMA y Gemma, para generar consultas (querys) SQL a partir de indicaciones en lenguaje natural. Se utilizará el dataset BIRD, que contiene tanto consultas SQL simples como complejas con su respectiva descripciones en lenguaje natural, permitiendo evaluar el rendimiento de los modelos en escenarios variados. Las evaluaciones se llevarán a cabo en tres etapas, aplicando estrategias de zero-shot, one-shot y few-shot learning. Las métricas principales serán la Execution Accuracy (EX) y el Valid Efficiency Score (VES), que medirán la precisión y la eficiencia en la generación de consultas SQL. Este análisis comparativo permitirá identificar las fortalezas y limitaciones de cada enfoque, con el objetivo de mejorar la interacción entre usuarios no técnicos y bases de datos.
+Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas que requieren conocimiento previo, como la interacción con bases de datos para almacenar, organizar y compartir información. El enfoque Text-to-SQL permite convertir instrucciones en lenguaje natural, proporcionadas por un usuario, en querys SQL funcionales, por lo que evaluar su rendimiento es clave. Este proyecto compara el rendimiento de Gemini 1.5 Flash y GPT-4o mini, utilizando una base de datos diseñada para la evaluación y cuatro métricas para medir la efectividad. Los resultados muestran un desempeño similar, con una ligera ventaja para Gemini 1.5 Flash, aunque GPT-4o mini sobresale en querys complejas con poco contexto.
 
 ## Hipótesis
-Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemma, supere a los anteriores modelos en cuanto a consultas SQL complejas.
+Los modelos de lenguaje pre entrenados, como Gemini o GPT, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemma, supere a los anteriores modelos en cuanto a consultas SQL complejas.
 
 ## Objetivos 
 - Comparar el rendimiento de modelos de lenguaje 
@@ -36,6 +36,12 @@ Los modelos de lenguaje pre entrenados, como GPT y LLaMA, lograrán un mejor ren
   - Valid Efficiency Score (VES): Mide la eficiencia en la generación de consultas válidas dentro de un tiempo razonable.
 - Análisis de errores: se clasificarán los errores en las respuestas generada
 
+# Resultados 
+La Tabla muestra los resultados de la smétricas  evaluadas, separadas en Zero-shot y Few-shot. Se observa una clara mejora al darle más ejemplos al modelo para generar la query (Few-shot). Debido a que la métrica VES parte de los resultados de EX, pero multiplicado por una constante que representa el tiempo de ejecución, presenta un valor mayor indicando que las querys generadas son eficientemente peor al ejecutarse comparadas con las querys verdades. La métrica que mejor resultados presento fue VA. Esta métrica no es de gran ayuda para el objetivo de este proyecto pero si para verificar que los modelos tienen la capacidad de generar querys que se puede ejecutar sin errores. Por ultimo
+la métrica CM es peor en cuanto a resultados, esto se debe a que compara uno a uno los resultados con las querys verdaderas. La figura 2 muestra los resultados agrupados
+según la dificultad de la pregunta. Se observa una como la métrica EX disminuye a medida que la pregunta se vuelve más compleja.
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 ## Referencias
 - [BIRD-SQL: A BIg Bench for Large-Scale Database Grounded Text-to-SQLs](https://bird-bench.github.io/)
