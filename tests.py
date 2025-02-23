@@ -288,17 +288,27 @@ def exact_set_match(df, model):
         predicted_words = extract_words(row[model])
         ground_truth_words = extract_words(row['ground_truth'])
 
-        if predicted_words == ground_truth_words:
-            esm.append(1)
-        else:
-            esm.append(0)
+        set_predicted = set(predicted_words)
+        set_truth = set(ground_truth_words)
+
+        comun = set_predicted & set_truth
+
+        cantidad_comun = len(comun)
+
+        resultado = len(comun)/len(set_truth)
+        esm.append(resultado)
+
+        #if predicted_words == ground_truth_words:
+        #    esm.append(1)
+        #else:
+        #    esm.append(0)
 
     result = sum(esm) / len(esm) * 100
     
     #print(f'Model: {model}')
     #print('-------------------------------')
     #print(f'EM - Total:\t\t{sum(esm) / len(esm) * 100:.2f} %')  
-    print(f'EM:\t {result:.2f} %')  
+    print(f'CM:\t{result:.2f} %')  
 
     return result
 
@@ -331,7 +341,7 @@ def mostrar_metricas(df, model, db_path, iterate_num=100):
 
     # Coincidencia exacta de conjuntos
     esm = exact_set_match(df, model)
-    metricas['EM'] = esm
+    metricas['CM'] = esm
 
     return metricas
 
