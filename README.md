@@ -41,7 +41,7 @@ La Tabla muestra los resultados de la smétricas  evaluadas, separadas en Zero-s
 la métrica CM es peor en cuanto a resultados, esto se debe a que compara uno a uno los resultados con las querys verdaderas. La figura 2 muestra los resultados agrupados
 según la dificultad de la pregunta. Se observa una como la métrica EX disminuye a medida que la pregunta se vuelve más compleja.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/EnzoRg/text_mining/blob/main/imagen/table_results.png)
 
 ## Referencias
 - [BIRD-SQL: A BIg Bench for Large-Scale Database Grounded Text-to-SQLs](https://bird-bench.github.io/)
