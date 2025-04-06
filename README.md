@@ -43,43 +43,58 @@ duce preguntas que requieren conocimiento externo y optimización en la ejecuci�
 
 [^1]: SPIDER 2.0 no había sido lanzado al momento de iniciar este proyecto.
 
+### Métodos 
+
+Existe una diferencia significativa en la precisión entre LLMs (74.12 %) y una persona experta en el dominio (92.96 %)[^2]. Debido a que aun existe una diferencia grande entre ambos, se da la necesidad de continuar con el desarrollo de los LLMs destinados a esta tarea para poder equiparar los resultados.
 
 
+Se exploraron diversos enfoques para crear modelos capaces de realizar tareas Text-to-SQL. Una forma de hacerlo es mediante el finetune sobre LLMs
+en ejemplos del tipo Text-to-SQL. Este proceso implica utilizar un modelo preentrenado, la preparación de los datos, el ajuste de parámetros y la evaluación.
+El objetivo es generar resultados precisos y que se adapten a este tipo de tareas.
 
 
+Los autores (Pourreza et al., 2024) proponen generar respuestas utilizando estrategias como el enfoque divide y vencerás, razonamiento basado en planes de ejecución y ejemplos sintéticos personalizados. Luego un agente selecciona la mejor query basado en comparaciones.
 
 
-## Hipótesis
-Los modelos de lenguaje pre entrenados, como Gemini o GPT, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemma, supere a los anteriores modelos en cuanto a consultas SQL complejas.
+Los autores (Liu and Tan, 2023) proponen un nuevo paradigma llamado Divide-and-Prompt, basado en la técnica Chain of Thought (CoT), que guía al modelo mediante un proceso de razonamiento paso a paso. Este enfoque combina la división de tareas complejas en subtareas manejables con la aplicación del razonamiento CoT para resolver cada una de ellas.
 
-## Objetivos 
-- Comparar el rendimiento de modelos de lenguaje 
-- Evaluar el impacto de los diferentes prompts para mejorar resultados 
-- Explorar la capacidad de los modelos para manejar consultas de diferentes niveles de complejidad
-- Identificar y analizar los principales errores en la generación de querys 
-- Optimizar los prompts utilizados en cada modelo para obtener los mejores resultados
+[^2]: BIRD-Bench Leaderboard ingresado el 11-11-2024.
 
-## Técnicas relevantes
-- Transformers 
-- Prompt engineering
-- Métricas de evalución
-- Análisis de error
-- Correlación 
+## Experimento 
 
-## Planificación 
-- Modelos evaluados: se seleccionarán los siguientes modelos para la generación de querys: 
-  - GPT
-  - LLaMA
-  - Gemma
-- Dataset: se utilizará el dataset mini-dev BIRD 
-- Estrategias de prompts:  
-  - Zero-shot: Se le pide al modelo que genere respuestas sin ejemplos previos
-  - One-shot: Se le proporciona un ejemplo previo para mejorar la generación
-  - Few-shot: Se le proporcionan varios ejemplos previos, incluyendo cabeceras de tablas
-- Métricas de evaluación: 
-  - Execution Accuracy (EX): Mide si la consulta generada devuelve los resultados correctos al ser ejecutada en la base de datos.
-  - Valid Efficiency Score (VES): Mide la eficiencia en la generación de consultas válidas dentro de un tiempo razonable.
-- Análisis de errores: se clasificarán los errores en las respuestas generada
+### Dataset 
+El dataset de BIRD es usado en este proyecto ya que esta orientado a escenarios más reales y del mundo real de las bases de datos, contempla diferentes campos de dominio y presenta tres niveles de complejidad: Simple, Moderate y Challenging.
+
+
+Contiene 12.721 preguntas con sus respectivas querys SQL y 95 bases de datos, con un tamaño total de 33.4 GB. Debido a su tamaño y alcance significativos, el experimento se llevó a cabo utilizando únicamente una base de datos.
+
+
+Superhero incluye querys relacionadas al mundo de los comics con un total de 129 preguntas con su query, divididas en 63% Simple, 26% Moderate y 12% Challenging. Si bien trabajos previos (Wretbladet al., 2024) demostraron la existencia de ruido en
+todo de BIRD, esta base de datos presenta el menor nivel de ruido, con un 15%. En el apéndice A se describe con más detalle la base de datos.
+
+### Métricas
+Para evaluar el desempeño de los modelos, se decidió utilizar las siguientes métricas:
+- **Execution Accuracy (EX)** mide la proporción de querys en los que los resultados ejecutados entre las querys predichas y las verdades son idénticos, en relación total de querys SQL.
+- **Valid Efficiency Score (VES)** mide la eficiencia de las querys generadas válidas por los modelos. Esto se refiere a las querys generadas cuyos resultados coinciden con las querys verdaderas. La eficiencia, en este caso, se refiere al tiempo de ejecución.
+- **Component Matching (CM)** mide la coincidencia exacta promedio entre los keywords de las querys generadas y las querys verdaderas (Yu et al., 2018).
+- **Valid SQL (VA)** mide la proporción de querys generadas que pueden ejecutarse sin errores, indistintamente del resultado (Zhong et al.,2020).
+
+Las dos primeras métricas son las utilizadas en el dataset seleccionado (Li et al., 2024). CM servirá para analizar las querys generadas por palabras y VA para demostrar que los modelos pueden generar querys sin errores.
+
+### Modelos 
+
+Los modelos utilizados son Gemini 1.5 Flash y GPT-4o mini, a través de sus APIs. La decisión de utilizar estos modelos radica en su facil acceso y su popularidad entre los usuarios, donde nace el titulo de este proyecto al comparar estos dos grandes modelos para este tipo de tareas. La Tabla 1 muestra la comparación[^3] de los modelos utilizados.
+
+<p align="center">
+  <img src="/imagen/models.png" alt="Modelos" width="500"/>
+</p>
+
+Tabla 1: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizados en este proyecto.
+
+Además estos modelos, y sus variantes, son los que mejor resultados presentan en el leaderbord[^4] de BIRD.
+
+[^3]: Datos obtenidos de LLM Stats. 
+[^4]: BIRD-Bench Leaderboard ingresado el 11-11-2024.
 
 # Resultados 
 La Tabla muestra los resultados de la smétricas  evaluadas, separadas en Zero-shot y Few-shot. Se observa una clara mejora al darle más ejemplos al modelo para generar la query (Few-shot). Debido a que la métrica VES parte de los resultados de EX, pero multiplicado por una constante que representa el tiempo de ejecución, presenta un valor mayor indicando que las querys generadas son eficientemente peor al ejecutarse comparadas con las querys verdades. La métrica que mejor resultados presento fue VA. Esta métrica no es de gran ayuda para el objetivo de este proyecto pero si para verificar que los modelos tienen la capacidad de generar querys que se puede ejecutar sin errores. Por ultimo
@@ -89,7 +104,7 @@ la métrica CM es peor en cuanto a resultados, esto se debe a que compara uno a 
   <img src="/imagen/table_results.png" alt="Tabla de resultados" width="500"/>
 </p>
 
-Tabla 1: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizados en este proyecto.
+Tabla 2: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizados en este proyecto.
 
 
 # Conclusiones
