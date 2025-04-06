@@ -1,12 +1,13 @@
 # Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL
 
-<img src="/imagen/banner.png" alt="Banner" width="400"/>
-
+<p align="center">
+  <img src="/imagen/banner.png" alt="Banner" width="500"/>
+</p>
 
 ## Resumen
 Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas que requieren conocimiento previo, como la interacción con bases de datos para almacenar, organizar y compartir información. El enfoque Text-to-SQL permite convertir instrucciones en lenguaje natural, proporcionadas por un usuario, en querys SQL funcionales, por lo que evaluar su rendimiento es clave. Este proyecto compara el rendimiento de Gemini 1.5 Flash y GPT-4o mini, utilizando una base de datos diseñada para la evaluación y cuatro métricas para medir la efectividad. Los resultados muestran un desempeño similar, con una ligera ventaja para Gemini 1.5 Flash, aunque GPT-4o mini sobresale en querys complejas con poco contexto.
 
-<img src="/imagen/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="400"/>
+<img src="/imagen/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
 
 Figura 1: Ejemplo de una tarea Text-to-SQL. Un usuario brinda el esquema el cual describe la base de datos y una pregunta relacionada al mismo. El modelo toma el
 esquema y la pregunta como la entrada, y genera una *query* SQL como salida.
