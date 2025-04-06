@@ -1,4 +1,7 @@
-# Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL
+<div alig="center">
+  <center><h1>Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL</h1></center>
+  <center>Enzo Nicolás Manolucos
+</div>
 
 <p align="center">
   <img src="/imagen/banner.png" alt="Banner" width="500"/>
