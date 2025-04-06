@@ -1,6 +1,6 @@
 # Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL
 
-<img src="/banner.png" alt="Table" width="500"/>
+<img src="/imagen/banner.png" alt="Banner" width="500"/>
 
 
 ## Resumen
@@ -42,13 +42,16 @@ Los modelos de lenguaje pre entrenados, como Gemini o GPT, lograrán un mejor re
 La Tabla muestra los resultados de la smétricas  evaluadas, separadas en Zero-shot y Few-shot. Se observa una clara mejora al darle más ejemplos al modelo para generar la query (Few-shot). Debido a que la métrica VES parte de los resultados de EX, pero multiplicado por una constante que representa el tiempo de ejecución, presenta un valor mayor indicando que las querys generadas son eficientemente peor al ejecutarse comparadas con las querys verdades. La métrica que mejor resultados presento fue VA. Esta métrica no es de gran ayuda para el objetivo de este proyecto pero si para verificar que los modelos tienen la capacidad de generar querys que se puede ejecutar sin errores. Por ultimo
 la métrica CM es peor en cuanto a resultados, esto se debe a que compara uno a uno los resultados con las querys verdaderas. 
 
-<img src="/imagen/table_results.png" alt="Table" width="500"/>
+<img src="/imagen/table_results.png" alt="Tabla de resultados" width="500"/>
+
+Tabla 1: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizados en este proyecto.
+
 
 # Conclusiones
 Al analizar los resultados en la Figura se observa como los modelos tienden a disminuir su eficiencia en las querys generadas a medida que la complejidad de las preguntas aumenta, en especial en los niveles Challenging. Aunque para este último caso, GPT-4o mini tiene una amplia ventaja. En general ambos modelos presentan resultados similares debido a que son versiones de los productos que compiten directamente. En conclusión, esta
  batalla la podría haber ganado Gemini 1.5 Flash, si el usuario utiliza un instrucción y pregunta clara. Cuando menos contexto tiene, GPT-4o mini es superior. Estos hallazgos resaltan la importancia de ajustar el número de ejemplos proporcionados y considerar estrategias que mejoren la precisión de las consultas generadas, especialmente en escenarios con preguntas de mayor dificultad.
  
-<img src="/imagen/ex_total_1x4.png" alt="Table" width="500"/>
+<img src="/imagen/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
 
 ## Referencias
 - [Can LLM Already Serve as a Database Interface? A Big Bench for Large-Scale Database Grounded Text-to-SQLs](https://neurips.cc/)
