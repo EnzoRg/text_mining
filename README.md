@@ -1,19 +1,53 @@
-<div alig="center">
-  <center><h1>Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL</h1></center>
-  <center>Enzo Nicolás Manolucos
-</div>
+# Batalla de Gigantes: Comparando LLMs para la traducción de lenguaje natural a SQL
+
+**Enzo Nicolás Manolucos**
 
 <p align="center">
   <img src="/imagen/banner.png" alt="Banner" width="500"/>
 </p>
 
-## Resumen
-Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas que requieren conocimiento previo, como la interacción con bases de datos para almacenar, organizar y compartir información. El enfoque Text-to-SQL permite convertir instrucciones en lenguaje natural, proporcionadas por un usuario, en querys SQL funcionales, por lo que evaluar su rendimiento es clave. Este proyecto compara el rendimiento de Gemini 1.5 Flash y GPT-4o mini, utilizando una base de datos diseñada para la evaluación y cuatro métricas para medir la efectividad. Los resultados muestran un desempeño similar, con una ligera ventaja para Gemini 1.5 Flash, aunque GPT-4o mini sobresale en querys complejas con poco contexto.
+## Abstract 
+Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas que requieren conocimiento previo, como la interacción con bases de datos para almacenar, organizar y compartir información. El enfoque Text-to-SQL permite convertir instrucciones en lenguaje natural, proporcionadas por un usuario, en *querys* SQL funcionales, por lo que evaluar su rendimiento es clave. Este proyecto compara el rendimiento de Gemini 1.5 Flash y GPT-4o mini, utilizando una base de datos diseñada para la evaluación y cuatro métricas para medir la efectividad. Los resultados muestran un desempeño similar, con una ligera ventaja para Gemini 1.5 Flash, aunque GPT-4o mini sobresale en *querys* complejas con poco contexto.
 
-<img src="/imagen/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
+## Introducción 
+Text-to-SQL es un tipo de tarea en el procesamiento de lenguaje natural (NLP) cuyo objetivo es generar automáticamente querys SQL a partir de texto en lenguaje natural. Esta tarea implica convertir instrucción de texto de entrada a una representación estructurada y luego utilizar esta representación para generar una query SQL semánticamasnte correcta que pueda ejecutarse en una base datos.
+
+
+A través del uso de grandes modelos de lenguaje (LLMs), un usuario sin conocimientos o con los conocimientos mínimos de los datos puede acceder a bases de datos e interactuar con ellas mediante Text-to-SQL. Los LLMs han emergido como grandes
+herramientas, demostrando un gran potencial para comprender preguntas complejas y poder traducirlas de forma precisa.
+
+
+Además, el uso óptimo de los prompts juega un papel crucial al momento de darle indicaciones a los LLMs para generación querys SQL. Para madurar estos modelos, se desarrollaron a lo largo de los años diversos datasets y métricas exclusivamente
+diseñadas para este tipo de tareas.
+
+
+
+<p align="center">
+  <img src="/imagen/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
+</p>
 
 Figura 1: Ejemplo de una tarea Text-to-SQL. Un usuario brinda el esquema el cual describe la base de datos y una pregunta relacionada al mismo. El modelo toma el
 esquema y la pregunta como la entrada, y genera una *query* SQL como salida.
+
+## Trabajos Previos
+
+### Datasets
+
+Existen diversos datasets para evaluar esta tarea. WikiSQL (Zhong et al., 2017) es un dataset que contempla operaciones simples del tipo SELECT y WHERE sin incluir *querys* anidades ni operaciones del tipo JOIN. Más tarde se desarrollo SPIDER (Yu
+et al., 2018) para ser una aproximación más certera a escenarios del mundo real, donde los modelos deben crear *querys* complejas y entender el esquema de la
+base de datos.
+
+
+Recientemente[^1] se creó BIRD (Li et al., 2024) para cerrar la brecha entre investigación académica y aplicaciones de la industria. Este dataset intro-
+duce preguntas que requieren conocimiento externo y optimización en la ejecución de las *querys*.
+
+[^1]: SPIDER 2.0 no había sido lanzado al momento de iniciar este proyecto.
+
+
+
+
+
+
 
 ## Hipótesis
 Los modelos de lenguaje pre entrenados, como Gemini o GPT, lograrán un mejor rendimiento en tareas de traducción de lenguaje natural a SQL en entornos de few-shot learning, comparados con escenarios de zero-shot. Además, se espera que el modelo Gemma, supere a los anteriores modelos en cuanto a consultas SQL complejas.
@@ -51,7 +85,9 @@ Los modelos de lenguaje pre entrenados, como Gemini o GPT, lograrán un mejor re
 La Tabla muestra los resultados de la smétricas  evaluadas, separadas en Zero-shot y Few-shot. Se observa una clara mejora al darle más ejemplos al modelo para generar la query (Few-shot). Debido a que la métrica VES parte de los resultados de EX, pero multiplicado por una constante que representa el tiempo de ejecución, presenta un valor mayor indicando que las querys generadas son eficientemente peor al ejecutarse comparadas con las querys verdades. La métrica que mejor resultados presento fue VA. Esta métrica no es de gran ayuda para el objetivo de este proyecto pero si para verificar que los modelos tienen la capacidad de generar querys que se puede ejecutar sin errores. Por ultimo
 la métrica CM es peor en cuanto a resultados, esto se debe a que compara uno a uno los resultados con las querys verdaderas. 
 
-<img src="/imagen/table_results.png" alt="Tabla de resultados" width="500"/>
+<p align="center">
+  <img src="/imagen/table_results.png" alt="Tabla de resultados" width="500"/>
+</p>
 
 Tabla 1: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizados en este proyecto.
 
@@ -59,9 +95,10 @@ Tabla 1: Comparación entre los modelos Gemini 1.5 Flash y GPT-4o Mini utilizado
 # Conclusiones
 Al analizar los resultados en la Figura se observa como los modelos tienden a disminuir su eficiencia en las querys generadas a medida que la complejidad de las preguntas aumenta, en especial en los niveles Challenging. Aunque para este último caso, GPT-4o mini tiene una amplia ventaja. En general ambos modelos presentan resultados similares debido a que son versiones de los productos que compiten directamente. En conclusión, esta
  batalla la podría haber ganado Gemini 1.5 Flash, si el usuario utiliza un instrucción y pregunta clara. Cuando menos contexto tiene, GPT-4o mini es superior. Estos hallazgos resaltan la importancia de ajustar el número de ejemplos proporcionados y considerar estrategias que mejoren la precisión de las consultas generadas, especialmente en escenarios con preguntas de mayor dificultad.
- 
-<img src="/imagen/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
 
+<p align="center">
+  <img src="/imagen/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
+</p>
 Figura 2: Resultados evaluando los modelos con Execution Accuracy (EX).
 
 ## Referencias
