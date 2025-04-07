@@ -1,6 +1,7 @@
 # Batalla de Gigantes: Comparando LLMs para la Traducción de Lenguaje Natural a SQL
 
 **Autor:** Enzo Manolucos  
+[Infome completo](/docs/Informe.pdf)
 
 <p align="center">
   <img src="/figures/banner.png" alt="Banner" width="500"/>
@@ -14,15 +15,13 @@ Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas qu
 
 ## 1. Introducción
 
-Text-to-SQL busca generar automáticamente consultas SQL a partir de instrucciones en lenguaje natural. Los LLMs permiten que incluso usuarios sin conocimientos técnicos interactúen con bases de datos de forma efectiva. La calidad de los *prompts* y los datasets de entrenamiento son clave para mejorar estos modelos.
+Text-to-SQL busca generar automáticamente consultas SQL a partir de instrucciones en lenguaje natural. Los LLMs permiten que incluso usuarios sin conocimientos técnicos interactúen con bases de datos de forma efectiva. La calidad de los *prompts* y los datasets de entrenamiento son clave para mejorar estos modelos. 
 
 <p align="center">
   <img src="/figures/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
 </p>
 
 _Un modelo toma un esquema y una pregunta como entrada, y genera una consulta SQL como salida._
-
-[Infome completo](/docs/Informe.pdf)
 
 ## 2. Trabajos Previos
 
