@@ -1,7 +1,6 @@
 # Batalla de Gigantes: Comparando LLMs para la Traducción de Lenguaje Natural a SQL
 
-**Autor:** Enzo Nicolás Manolucos  
-**Contacto:** [enzo.manolucos@mi.unc.edu.ar](mailto:enzo.manolucos@mi.unc.edu.ar)
+**Autor:** Enzo Manolucos  
 
 <p align="center">
   <img src="/imagen/banner.png" alt="Banner" width="500"/>
