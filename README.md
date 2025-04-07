@@ -88,20 +88,19 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 </p>
 
 - Ambos modelos obtuvieron una alta tasa de **validación sintáctica (VA)**, por encima del 90%.
-- Gemini tuvo mejor desempeño general, particularmente en:
-  - **VES** 
-  - **CM** 
+- Gemini tuvo mejor desempeño general, particularmente en **VES** y **CM**.
 - GPT-4o Mini mostró mejor **razonamiento contextual** en consultas difíciles.
 
-> *GPT-4o Mini fue capaz de inferir relaciones indirectas mejor que Gemini en ciertas consultas complejas, aunque esto no se refleje completamente en las métricas cuantitativas.*
+> *GPT-4o Mini fue capaz de inferir relaciones indirectas mejor que Gemini en ciertas consultas complejas, aunque esto no se refleje completamente en las métricas.*
 
 ## 5. Conclusiones
 
-- **Gemini 1.5 Flash** tuvo un rendimiento ligeramente superior en métricas cuantitativas.
+- **Gemini 1.5 Flash** tuvo un rendimiento ligeramente superior en las métricas.
 - **GPT-4o Mini** demostró mejor razonamiento en ejemplos complejos sin contexto adicional.
 - Ambos modelos son aptos para tareas Text-to-SQL, aunque sus fortalezas difieren:
   - Gemini: precisión estructural.
   - GPT-4o: inferencia contextual.
+- Se observa como la métrica EX disminuye a medida que la pregunta se vuelve más compleja.
 
 <p align="center">
   <img src="/imagen/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
@@ -110,11 +109,11 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 *La elección del modelo puede depender del tipo de consultas esperadas y de la disponibilidad de recursos computacionales.*
 
 ## 6. Limitaciones
-Este estudio ofrece resultados concretos en la tarea de Text-to-SQL, aunque con ciertas limitaciones. El análisis se realizó exclusivamente sobre una base de datos del dominio de superhéroes utilizando el dataset BIRD, lo que restringe la generalización de los resultados a otros dominios.
+El análisis se realizó exclusivamente sobre una base de datos del dominio de superhéroes utilizando el dataset BIRD, lo que restringe la generalización de los resultados a otros dominios.
 
-Debido a limitaciones de cómputo, solo se evaluaron dos modelos (Gemini 1.5 Flash y GPT-4o mini) y se utilizaron dos tipos de prompts. Explorar más modelos o técnicas de prompting podría haber brindado una visión más completa.
+Debido a limitaciones de cómputo, solo se evaluaron dos modelos y se utilizaron dos tipos de prompts. Explorar más modelos o técnicas de prompting podría haber brindado una visión más completa.
 
-Además, al trabajar con modelos propietarios, no se garantiza la reproducibilidad futura de los resultados, ya que estos modelos pueden cambiar con el tiempo. Los resultados aquí reportados corresponden al estado de los modelos en noviembre de 2024.
+Además, al trabajar con modelos propietarios, no se garantiza la reproducibilidad futura de los resultados, ya que estos modelos pueden cambiar con el tiempo. Los resultados reportados corresponden al estado de los modelos en noviembre de 2024.
 
 ## 7. Trabajo Futuro
 Para mejorar este enfoque, se propone:
@@ -125,10 +124,6 @@ Para mejorar este enfoque, se propone:
 - Ampliar la base de datos para mejorar la generalización.
 - Automatizar el pipeline de evaluación para facilitar su aplicación en nuevos contextos.
 - Implementar los modelos en un sistema real para evaluar su impacto práctico.
-
-Estas mejoras buscan lograr consultas más precisas, eficientes y aplicables a escenarios reales.
-
-
 
 ## Referencias
 
