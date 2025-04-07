@@ -12,7 +12,6 @@ Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas qu
 
 > Los resultados muestran un rendimiento similar, con una ligera ventaja para Gemini 1.5 Flash. Sin embargo, GPT-4o Mini sobresale en consultas complejas con poco contexto.
 
-
 ## 1. Introducción
 
 Text-to-SQL busca generar automáticamente consultas SQL a partir de instrucciones en lenguaje natural. Los LLMs permiten que incluso usuarios sin conocimientos técnicos interactúen con bases de datos de forma efectiva. La calidad de los *prompts* y los datasets de entrenamiento son clave para mejorar estos modelos.
@@ -22,6 +21,8 @@ Text-to-SQL busca generar automáticamente consultas SQL a partir de instruccion
 </p>
 
 _Un modelo toma un esquema y una pregunta como entrada, y genera una consulta SQL como salida._
+
+[Infome completo](/docs/Informe.pdf)
 
 ## 2. Trabajos Previos
 
