@@ -28,9 +28,9 @@ _Un modelo toma un esquema y una pregunta como entrada, y genera una consulta SQ
 
 ### 2.1 Datasets
 
-- **WikiSQL** (Zhong et al., 2017): operaciones simples `SELECT` y `WHERE`.
-- **SPIDER** (Yu et al., 2018): consultas complejas y esquemas variados.
-- **BIRD** (Li et al., 2024): incorpora conocimiento externo y eficiencia en ejecución.
+- **WikiSQL**: operaciones simples `SELECT` y `WHERE`.
+- **SPIDER**: consultas complejas y esquemas variados.
+- **BIRD**: incorpora conocimiento externo y eficiencia en ejecución.
 
 > ⚠️ *SPIDER 2.0 no estaba disponible al momento de comenzar el proyecto.*
 
@@ -42,15 +42,15 @@ _Un modelo toma un esquema y una pregunta como entrada, y genera una consulta SQ
 
 - Métodos explorados:
   - Finetuning de modelos con ejemplos Text-to-SQL.
-  - Enfoques como **divide and conquer**, razonamiento por planes de ejecución y ejemplos sintéticos (Pourreza et al., 2024).
-  - **Divide-and-Prompt** con *Chain of Thought* (Liu and Tan, 2023).
+  - Enfoques como **divide and conquer**, razonamiento por planes de ejecución y ejemplos sintéticos.
+  - **Divide-and-Prompt** con *Chain of Thought*.
 
 
 ## 3. Experimento
 
 ### 3.1 Dataset
 
-Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**, con 129 preguntas relacionadas al mundo de los cómics:
+Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**, con 129 preguntas relacionadas al mundo de los cómics, divididas en las siguientes dificultades:
 
 - 63% Simple
 - 26% Moderate
@@ -67,46 +67,30 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 
 ### 3.3 Modelos Comparados
 
-| Característica     | Gemini 1.5 Flash | GPT-4o Mini |
-|--------------------|------------------|-------------|
-| Tokens de entrada  | 1.048.576        | 128.000     |
-| Costo*             | $0.13 / $0.38    | $0.15 / $0.60 |
-| MMLU               | 78.9%            | 82%         |
-| Velocidad          | 166 tokens/seg   | 97 tokens/seg |
-| Latencia           | 1.06 seg         | 0.56 seg     |
-| Idiomas            | +100             | No especificado |
-| Lanzamiento        | 09/2024          | 07/2024     |
-| Entrenamiento      | 11/2023          | 10/2023     |
-
-> \* Costos por procesamiento de tokens (entrada y salida).
+<p align="center">
+  <img src="/imagen/models.png" alt="Modelos" width="500"/>
+</p>
 
 [Comparación de modelos - LLM Stats](https://llm-stats.com/models/compare/gpt-4o-mini-2024-07-18-vs-gemini-1.5-flash)
 
----
+**Los modelos utilizados no son de código abierto, lo cual limita la reproducibilidad del experimento.** Sin embargo, fueron elegidos por su disponibilidad y popularidad.
 
-## Limitaciones
+### 3.4 Prompts
 
-Los modelos utilizados no son de código abierto, lo cual limita la reproducibilidad del experimento. Sin embargo, fueron elegidos por su disponibilidad y popularidad.
+- **Zero-Shot**: incluye la tarea y la pregunta, con una variante que incluye conocimiento externo.
 
----
+- **Few-Shot**: incluye la tarea, la pregunta y ejemplos, con una variante que incluye conocimiento externo.
 
 ## 4. Resultados
 
-### 4.1 Métricas obtenidas
+<p align="center">
+  <img src="/imagen/table_results.png" alt="Resultados" width="500"/>
+</p>
 
-| Métrica | Gemini 1.5 Flash | GPT-4o Mini |
-|--------|-------------------|-------------|
-| EX     | 86.82%            | 85.27%      |
-| VES    | 96.99%            | 93.41%      |
-| CM     | 89.92%            | 84.89%      |
-| VA     | 99.22%            | 99.22%      |
-
-### 4.2 Análisis
-
-- Ambos modelos obtuvieron una alta tasa de **validación sintáctica (VA)**, por encima del 99%.
+- Ambos modelos obtuvieron una alta tasa de **validación sintáctica (VA)**, por encima del 90%.
 - Gemini tuvo mejor desempeño general, particularmente en:
-  - **VES** (+3.58 puntos porcentuales)
-  - **CM** (+5.03 puntos porcentuales)
+  - **VES** 
+  - **CM** 
 - GPT-4o Mini mostró mejor **razonamiento contextual** en consultas difíciles.
 
 > *GPT-4o Mini fue capaz de inferir relaciones indirectas mejor que Gemini en ciertas consultas complejas, aunque esto no se refleje completamente en las métricas cuantitativas.*
@@ -124,6 +108,25 @@ Los modelos utilizados no son de código abierto, lo cual limita la reproducibil
 </p>
 
 *La elección del modelo puede depender del tipo de consultas esperadas y de la disponibilidad de recursos computacionales.*
+
+## 6. Limitaciones
+Este estudio ofrece resultados concretos en la tarea de Text-to-SQL, aunque con ciertas limitaciones. El análisis se realizó exclusivamente sobre una base de datos del dominio de superhéroes utilizando el dataset BIRD, lo que restringe la generalización de los resultados a otros dominios.
+
+Debido a limitaciones de cómputo, solo se evaluaron dos modelos (Gemini 1.5 Flash y GPT-4o mini) y se utilizaron dos tipos de prompts. Explorar más modelos o técnicas de prompting podría haber brindado una visión más completa.
+
+Además, al trabajar con modelos propietarios, no se garantiza la reproducibilidad futura de los resultados, ya que estos modelos pueden cambiar con el tiempo. Los resultados aquí reportados corresponden al estado de los modelos en noviembre de 2024.
+
+## 7. Trabajo Futuro
+Para mejorar este enfoque, se propone:
+
+- Optimizar los prompts con técnicas de few-shot más avanzadas.
+- Evaluar modelos más recientes o especializados en generación de SQL.
+- Incorporar métricas que también midan eficiencia computacional.
+- Ampliar la base de datos para mejorar la generalización.
+- Automatizar el pipeline de evaluación para facilitar su aplicación en nuevos contextos.
+- Implementar los modelos en un sistema real para evaluar su impacto práctico.
+
+Estas mejoras buscan lograr consultas más precisas, eficientes y aplicables a escenarios reales.
 
 
 
