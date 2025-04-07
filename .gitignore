@@ -2,9 +2,9 @@ your_database.db
 
 # Notebooks
 #llm_api.ipynb
-models_ft.ipynb
+/notebooks/models_ft.ipynb
+/notebooks/evaluation.ipynb
 prueba_cm.py
-evaluation.py
 
 # Foldes
 /bird_dev
