@@ -3,7 +3,7 @@
 **Autor:** Enzo Manolucos  
 
 <p align="center">
-  <img src="/imagen/banner.png" alt="Banner" width="500"/>
+  <img src="/figures/banner.png" alt="Banner" width="500"/>
 </p>
 
 ## Abstract
@@ -18,7 +18,7 @@ Los grandes modelos de lenguaje (LLMs) son cada vez más eficientes en tareas qu
 Text-to-SQL busca generar automáticamente consultas SQL a partir de instrucciones en lenguaje natural. Los LLMs permiten que incluso usuarios sin conocimientos técnicos interactúen con bases de datos de forma efectiva. La calidad de los *prompts* y los datasets de entrenamiento son clave para mejorar estos modelos.
 
 <p align="center">
-  <img src="/imagen/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
+  <img src="/figures/user_text_to_sql.png" alt="Ejemplo de Text-to-SQL" width="500"/>
 </p>
 
 _Un modelo toma un esquema y una pregunta como entrada, y genera una consulta SQL como salida._
@@ -67,7 +67,7 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 ### 3.3 Modelos Comparados
 
 <p align="center">
-  <img src="/imagen/models.png" alt="Modelos" width="500"/>
+  <img src="/figures/models.png" alt="Modelos" width="500"/>
 </p>
 
 [Comparación de modelos - LLM Stats](https://llm-stats.com/models/compare/gpt-4o-mini-2024-07-18-vs-gemini-1.5-flash)
@@ -83,7 +83,7 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 ## 4. Resultados
 
 <p align="center">
-  <img src="/imagen/table_results.png" alt="Resultados" width="500"/>
+  <img src="/figures/table_results.png" alt="Resultados" width="500"/>
 </p>
 
 - Ambos modelos obtuvieron una alta tasa de **validación sintáctica (VA)**, por encima del 90%.
@@ -102,7 +102,7 @@ Se utilizó el dataset **BIRD**, específicamente la base de datos **Superhero**
 - Se observa como la métrica EX disminuye a medida que la pregunta se vuelve más compleja.
 
 <p align="center">
-  <img src="/imagen/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
+  <img src="/figures/ex_total_1x4.png" alt="Grafico de resultados" width="1000"/>
 </p>
 
 *La elección del modelo puede depender del tipo de consultas esperadas y de la disponibilidad de recursos computacionales.*
